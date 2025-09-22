@@ -27,7 +27,7 @@ The agent talks to language models through the official `openai` Python SDK, so 
 
 - `OPENROUTER_API_KEY` – the API key (or token string) passed to the SDK. This is loaded from the environment or your `.env` file by default.
 - `OPENROUTER_BASE_URL` – override this to point at a proxy such as [gpt2giga](https://github.com/ai-forever/gpt2giga) (for example, `http://127.0.0.1:8090/v1`). Defaults to the OpenRouter API.
-- `OPENROUTER_STRONG_MODEL` – set the model name you want the agent to request (e.g. `GigaChat` when working with GigaChat-compatible backends).
+- `OPENROUTER_STRONG_MODEL` – set the model name you want the agent to request (e.g. `GigaChat-2-Max` when working with GigaChat-compatible backends).
 
 This makes it easy to switch between OpenRouter, a local vLLM instance, or third-party services without touching the source code—just update the environment variables before launching the server.
 
