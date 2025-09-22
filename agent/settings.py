@@ -8,10 +8,10 @@ load_dotenv()
 # Agent settings
 MAX_TOOL_TURNS = 20
 
-# OpenRouter
-OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+# OpenRouter-compatible endpoints
+OPENROUTER_BASE_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-OPENROUTER_STRONG_MODEL = "anthropic/claude-sonnet-4"
+OPENROUTER_STRONG_MODEL = os.getenv("OPENROUTER_STRONG_MODEL", "anthropic/claude-sonnet-4")
 
 # vLLM
 VLLM_HOST = os.getenv("VLLM_HOST", "0.0.0.0")

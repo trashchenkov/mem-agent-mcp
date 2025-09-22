@@ -11,7 +11,7 @@ This is an MCP server for our model [driaforall/mem-agent](https://huggingface.c
 
 1. `make check-uv` (if you have uv installed, skip this step).
 2. `make install`: Installs LmStudio on MacOS.
-3. `make setup`: This will open a file selector and ask you to select the directory where you want to store the memory. 
+3. `make setup`: This will open a file selector and ask you to select the directory where you want to store the memory.
 4. `make run-agent`: If you're on macOS, this will prompt you to select the precision of the model you want to use. 4-bit is very usable as tested, and higher precision models are more reliable but slower.
 5. `make generate-mcp-json`: Generates the `mcp.json` file. That will be used in the next step.
 6. Instructions per app/provider:
@@ -19,6 +19,17 @@ This is an MCP server for our model [driaforall/mem-agent](https://huggingface.c
         - Copy the generated `mcp.json` to the where your `claude_desktop.json` is located, then, quit and restart Claude Desktop. Check [this guide](https://modelcontextprotocol.io/quickstart/user) for detailed instructions.
     - Lm Studio:
         - Copy the generated `mcp.json` to the `mcp.json` of Lm Studio. Check [this guide](https://lmstudio.ai/docs/app/plugins/mcp) for detailed instructions. If there are problems, change the name of the model in .mlx_model_name (found in the root of this repo) from `mem-agent-mlx-4bit` or `mem-agent-mlx-8bit` to `mem-agent-mlx@4bit` or `mem-agent-mlx@8bit` respectively.
+
+
+## Configuring API endpoints
+
+The agent talks to language models through the official `openai` Python SDK, so any OpenAI-compatible endpoint can be used.
+
+- `OPENROUTER_API_KEY` – the API key (or token string) passed to the SDK. This is loaded from the environment or your `.env` file by default.
+- `OPENROUTER_BASE_URL` – override this to point at a proxy such as [gpt2giga](https://github.com/ai-forever/gpt2giga) (for example, `http://127.0.0.1:8090/v1`). Defaults to the OpenRouter API.
+- `OPENROUTER_STRONG_MODEL` – set the model name you want the agent to request (e.g. `GigaChat` when working with GigaChat-compatible backends).
+
+This makes it easy to switch between OpenRouter, a local vLLM instance, or third-party services without touching the source code—just update the environment variables before launching the server.
 
 
 ## Memory Instructions
