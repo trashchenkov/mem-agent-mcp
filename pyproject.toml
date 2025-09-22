@@ -8,6 +8,7 @@ dependencies = [
     "agent",
     "mcp-server",
     "rich>=13.7.0",
+    "python-dotenv",
 ]
 
 [tool.uv.workspace]
